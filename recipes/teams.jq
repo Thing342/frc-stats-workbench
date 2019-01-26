@@ -1,1 +1,1 @@
-.[] | ("red","blue") as $color | .alliances[$color].team_keys + [.key + "_" + $color] | @csv
+.[] | ("red","blue") as $color | .alliances[$color].team_keys + [.key + "_" + $color, .comp_level, .event_key]| @csv

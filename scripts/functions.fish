@@ -7,3 +7,11 @@ end
 function tbajoin
 	sed 's/--_curl_--.*/ /'
 end
+
+function tbamatches
+    set name $argv[1]
+    set matches $argv[2..-1]
+    tba event/$matches/matches | jq > data/matches_$name.json
+    jq -rf recipes/teams.jq  < data/matches_$name.json > data/matches_teams_$name.csv
+    jq -rf recipes/breakdown.jq < data/matches_$name.json > data/matches_$name.csv
+end

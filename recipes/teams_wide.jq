@@ -1,0 +1,1 @@
+.[] | .alliances.blue.team_keys + .alliances.red.team_keys + [.key, .comp_level, .event_key]| @csv

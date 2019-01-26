@@ -1,0 +1,1 @@
+.[] | (.score_breakdown.red | map(values) ) + (.score_breakdown.blue | map(values) ) + [.key, .comp_level, .event_key] | @csv

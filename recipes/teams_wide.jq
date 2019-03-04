@@ -1,1 +1,1 @@
-.[] | .alliances.blue.team_keys + .alliances.red.team_keys + [.key, .comp_level, .event_key]| @csv
+.[] | select(.score_breakdown != null) | .alliances.blue.team_keys + .alliances.red.team_keys + [.key, .comp_level, .event_key]| @csv

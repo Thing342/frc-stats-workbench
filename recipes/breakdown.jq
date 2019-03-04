@@ -1,1 +1,1 @@
-.[] | ("red","blue") as $color | (.score_breakdown[$color] | map(values) ) + [.key + "_" + $color, .comp_level, .event_key] | @csv
+.[] | select(.score_breakdown != null) | ("red","blue") as $color | (.score_breakdown[$color] | map(values) ) + [.key + "_" + $color, .comp_level, .event_key] | @csv

@@ -33,7 +33,7 @@ function read_stacked(event_key::String, event_year::String)
     push!(headers, "event")
 
     scores = CSV.read("../data/matches_$(event_key)_stacked.csv", header=headers)
-    teams = CSV.read("../data/matches_teams_$(event_key)_stacked.csv", header=["team1","team2","team3","key","level","event"])
+    teams = CSV.read("../data/teams_$(event_key)_stacked.csv", header=["team1","team2","team3","key","level","event"])
     return (headers, scores, teams)
 end
     

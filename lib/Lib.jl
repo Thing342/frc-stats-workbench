@@ -38,5 +38,11 @@ function read_stacked(event_key::String, event_year::String)
 end
     
 numeric_col_names(df::DataFrame) = [n for (n, c) in eachcol(df, true) if eltype(c) <: Union{Number, Missing}]
+    
+counting_fold(itr) = foldr(
+    (n, (list, last)) -> ( push!(list, if (n == last) list[end] + 1 else 0 end), n), 
+    itr |> reverse; 
+    init = ([],"")
+)
 
 end

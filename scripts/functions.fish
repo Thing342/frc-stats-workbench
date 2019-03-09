@@ -15,3 +15,11 @@ function tbamatches
     jq -rf recipes/teams.jq  < data/matches_{$name}.json > data/teams_{$name}_stacked.csv
     jq -rf recipes/breakdown.jq < data/matches_{$name}.json > data/matches_{$name}_stacked.csv
 end
+
+function tbamatches_wide
+    set name $argv[1]
+    set matches $argv[2..-1]
+    tba event/$matches/matches | jq > data/matches_{$name}.json
+    jq -rf recipes/team_wide.jq  < data/matches_{$name}.json > data/teams_{$name}_wide.csv
+    jq -rf recipes/breakdown_wide.jq < data/matches_{$name}.json > data/matches_{$name}_wide.csv
+end

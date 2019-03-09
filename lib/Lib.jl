@@ -37,6 +37,16 @@ function read_stacked(event_key::String, event_year::String)
     return (headers, scores, teams)
 end
     
+function read_wide(event_key::String, event_year::String)
+    headers = CSV.read("../data/$(event_year)_headers.csv") |> (h -> String.(names(h)))
+    red_headers = [h * "_red" for h in headers]
+    blue_headers = [h * "_blue" for h in headers]
+    headers_wide = [red_headers; blue_headers; "key"; "level"; "event"]
+
+    scores_wide = CSV.read("../data/matches_$(KEY)_wide.csv", header=headers_wide)
+    return (headers, scores)
+end
+    
 numeric_col_names(df::DataFrame) = [n for (n, c) in eachcol(df, true) if eltype(c) <: Union{Number, Missing}]
     
 counting_fold(itr) = foldr(
